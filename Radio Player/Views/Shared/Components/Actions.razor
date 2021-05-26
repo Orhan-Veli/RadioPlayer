@@ -1,0 +1,25 @@
+﻿@using Radio_Player.Models
+@using Microsoft.AspNetCore.Components
+
+<span><a href="javascript:;" onclick="PlayRadio('@Model.RadioConnection')"><img src="/MainPanel/Icons/Start.png" width="20" height="20" title="Play"></a></span>
+<span><a href="javascript:;" onclick="StopRadio()"><img src="/MainPanel/Icons/Stop.png" width="20" height="20" title="Stop"></a></span>
+@if (IsAdmin)
+{
+    <span><a href="javascript:;" onclick="UpdateRadio('@Model.Id','@Model.Name','@Model.Category','@Model.RadioConnection')"><img src="/MainPanel/Icons/Edit.png" width="20" height="20" title="Edit"></a></span>
+    <span><a href="javascript:;" onclick="LikeRadio('@Model.Id')"><img src="/MainPanel/Icons/Like.png" width="30" height="30" title="Like"></a></span>
+    <span><a href="javascript:;" onclick="TrashRadio('@Model.Id')"><img src="/MainPanel/Icons/Trash.png" width="20" height="20" title="Delete"></a></span>
+}
+else if (IsUser)
+{
+    <span><a href="javascript:;" onclick="LikeRadio('@Model.Id')"><img src="/MainPanel/Icons/Like.png" width="30" height="30" title="Like"></a></span>
+}
+
+@code {
+    [Parameter]
+    public RadioListViewModel Model { get; set; }
+    [Parameter]
+    public bool IsAdmin { get; set; }
+    [Parameter]
+    public bool IsUser { get; set; }
+
+}

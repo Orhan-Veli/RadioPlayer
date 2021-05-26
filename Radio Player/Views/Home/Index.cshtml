@@ -1,0 +1,433 @@
+﻿@using Radio_Player.Authentication;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> singInManager;
+@model List<RadioListViewModel>
+@{ 
+    ViewData["Title"] = "Home Page";
+    bool isAdmin = User.IsInRole("Admin");
+    bool isUser = User.IsInRole("User");
+
+}
+<style>
+    .btsnts-flt-wdt {
+        position: fixed;
+        right: 50px;
+        top: 90%;
+        border: none;
+        background-color: transparent;
+    }
+
+        .btsnts-flt-wdt img {
+            float: right;
+            clear: right;
+            margin: 1px;
+            -webkit-transition: all .0s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+            .btsnts-flt-wdt img:hover {
+                -moz-transform: scale(1.2) rotate(6deg);
+                -webkit-transform: scale(1.2) rotate(6deg);
+                -o-transform: scale(1.2) rotate(6deg);
+                -ms-transform: scale(1.2) rotate(6deg);
+                transform: scale(1.2) rotate(6deg);
+            }
+</style>
+
+
+<div class="fresh-table full-color-orange full-screen-table">
+    @if (singInManager.Context.User.IsInRole("Admin"))
+    {
+<div class="btsnts-flt-wdt">
+    <button type="button" data-toggle="modal" data-target="#exampleModal"><img src="~/MainPanel/Icons/RadioTower.png" height="50" width="50" title="Add" /></button>
+</div>
+    }
+
+    <!--
+      Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+      Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+    -->
+    <table id="fresh-table" class="table">
+        <thead>
+        <th data-field="id">ID</th>
+        <th data-field="name" data-sortable="true">Name</th>
+        <th data-field="category" data-sortable="true">Category</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            @{ var i = 1;
+                foreach (var item in Model)
+                {
+                    if (singInManager.IsSignedIn(User))
+                    {
+    <tr>
+        <td>@i</td>
+        <td>@item.Name</td>
+        <td>@item.Category</td>
+        <td>
+            <component type="typeof(Radio_Player.Views.Shared.Components.Actions)" param-isAdmin="isAdmin" param-isUser="isUser" param-model="item" render-mode="ServerPrerendered">
+        </td>
+    </tr> }
+                    else
+                    {
+                        if (i < 4)
+                        {
+    <tr>
+        <td>@i</td>
+        <td>@item.Name</td>
+        <td>@item.Category</td>
+        <td>
+            <component type="typeof(Radio_Player.Views.Shared.Components.Actions)" param-model="item" render-mode="ServerPrerendered">
+        </td>
+    </tr> }
+                    }
+                    i++;
+                } }
+        </tbody>
+    </table>
+</div>
+<div>
+    @if (singInManager.IsSignedIn(User))
+    {
+        <span><button type="button" onclick="Logout()" class="btn btn-dark">SignOut</button></span> }
+
+    else
+    {
+        <span><button type="button" data-toggle="modal" data-target="#loginModal" class="btn btn-dark">Sign In</button></span>
+        <span><button type="button" data-toggle="modal" data-target="#registerModal" class="btn btn-dark">Register</button></span>
+    }
+
+
+</div>
+
+
+
+
+<div class="modal fade" id="registerModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Register with</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form">
+                    <form method="post" html="{:multipart=>true}" data-remote="true" action="" accept-charset="UTF-8">
+                        <input id="UserName" class="form-control" type="text" placeholder="UserName" name="UserName" required>
+                        <input id="email" class="form-control" type="text" placeholder="Email" name="email" required>
+                        <input id="password" class="form-control" type="text" placeholder="Password" name="password" required>
+                        <input id="password_confirmation" class="form-control" type="text" placeholder="Repeat Password" name="password_confirmation" required>
+                        <input class="btn btn-default btn-register" type="submit" value="Create account" id="commit" name="commit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog login animated">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login with</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form">
+                    <form method="post" html="{:multipart=>true}" data-remote="true" action="" accept-charset="UTF-8">
+                        <input id="UserName" class="form-control" type="text" placeholder="UserName" name="UserName" required>
+                        <input id="password" class="form-control" type="text" placeholder="Password" name="password" required>
+                        <input class="btn btn-default btn-register" type="submit" value="Login" id="commit" name="commit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RadioAdd">Radio Add</h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="Name" required>
+                </div><br />
+                <select id="SelectedValue" class="form-select form-control" aria-label="Default select example">
+                    <option selected>Category</option>
+                    <option value="1">Rock</option>
+                    <option value="2">Jazz</option>
+                    <option value="3">Metal</option>
+                    <option value="4">Rap</option>
+                    <option value="5">Pop</option>
+                </select><br />
+                <div class="mb-3">
+                    <label for="RadioConnection" class="form-label">RadioConnectionUrl</label>
+                    <input type="text" class="form-control" id="RadioConnection" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="CreateButton" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RadioUpdate">Radio Update</h5>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="id" class="form-label">Id</label>
+                    <input type="text" class="form-control" name="Id" id="Id" readonly>
+                </div><br />
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="Name" id="Name" required>
+                </div><br />
+                <select id="SelectedValue" name="SelectedValue" class="form-select form-control" aria-label="Default select example">
+                    <option selected>Category</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Rap">Rap</option>
+                    <option value="Pop">Pop</option>
+                </select><br />
+                <div class="mb-3">
+                    <label for="RadioConnection" class="form-label">RadioConnectionUrl</label>
+                    <input type="text" class="form-control" name="RadioConnection" id="RadioConnection" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" id="UpdateButton" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function Logout()
+        {
+        $.ajax({
+            method : "POST",
+            url: "@Url.Action("Logout", "Account")",          
+            success: function (result)
+            {
+                if (result)
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert(result.description);
+                }
+            }
+        });
+    }
+    </script>
+    <script>
+    $('#loginModal #commit').click(function () {
+        event.preventDefault();
+
+        var UserName = $('#loginModal #UserName').val();
+        var Password = $('#loginModal #password').val();
+        $.ajax({
+            method : "POST",
+            url: "@Url.Action("Login", "Account")",
+            data: { UserName, Password },
+            success: function (result)
+            {
+                if (result)
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert(result.description);
+                }
+            }
+        });
+    });
+    </script>
+    <script>
+    $('#commit').click(function () {
+        event.preventDefault();
+
+        var UserName = $('#registerModal #UserName').val();
+        var Email = $('#registerModal #email').val();
+        var Password = $('#registerModal #password').val();
+        var ConfirmPassword = $('#registerModal #password_confirmation').val();
+        $.ajax({
+            method : "POST",
+            url: "@Url.Action("Register", "Account")",
+            data: { UserName, Email, Password, ConfirmPassword },
+            success: function (result)
+            {
+                if (result)
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert(result.description);
+                }
+            }
+        });
+    });
+    </script>
+    <script>
+        var $table = $('#fresh-table')
+
+        $(function () {
+            $table.bootstrapTable({
+                classes: 'table table-hover table-striped',
+                toolbar: '.toolbar',
+
+                search: true,
+                showRefresh: true,
+                showToggle: true,
+                showColumns: true,
+                pagination: true,
+                striped: true,
+                sortable: true,
+                height: $(window).height(),
+                pageSize: 25,
+                pageList: [25, 50, 100],
+
+                formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                    return ''
+                },
+                formatRecordsPerPage: function (pageNumber) {
+                    return pageNumber + ' rows visible'
+                }
+            })
+
+
+            $(window).resize(function () {
+                $table.bootstrapTable('resetView', {
+                    height: $(window).height(),
+                    width: $(window).width()
+                })
+            })
+        })
+
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga')
+
+    ga('create', 'UA-46172202-1', 'auto')
+    ga('send', 'pageview')
+    </script>
+    <script>
+    var audio;
+    function PlayRadio(url)
+    {
+        StopRadio();
+        audio = new Audio(url);
+        audio.play();
+    }
+    function StopRadio()
+    {
+        if (audio != undefined) {
+            audio.pause();
+        }
+
+    }
+    function TrashRadio(id)
+    {
+        $.ajax({
+            type: "DELETE",
+            url: '@Url.Action("Delete","Home")',
+            data: { id },
+            success: function (result) {
+                if (result) {                    
+                    location.reload();
+                }
+                else
+                {
+                    alert('An error appeared.');
+                }
+            }
+        });
+    }
+
+    function UpdateRadio(Id,Name,Category,RadioConnection)
+    {
+
+        $('#updateModal').modal('show');
+        $('#updateModal #Name').val(Name);
+        $('#updateModal #Id').val(Id);
+        $('#updateModal #SelectedValue').val(Category);
+        $('#updateModal #RadioConnection').val(RadioConnection);
+
+    }
+
+    $('#UpdateButton').click(function () {
+        debugger;
+        var Id = $('#updateModal #Id').val();
+        var Name = $('#updateModal #Name').val();
+        var RadioConnection = $('#updateModal #RadioConnection').val();
+        var Category = $('#updateModal #SelectedValue').val();
+          $('#UpdateButton').click(function () {
+            $.ajax({
+                type: "PUT",
+                url: "@Url.Action("Update","Home")",
+                data: { Id, Name, Category, RadioConnection },
+                success: function (result) {
+                    if (result) {
+                        $('#updateModal').modal('dispose');
+                        location.reload();
+                    }
+                    else
+                    {
+                        alert('Update error');
+                    }
+                }
+            });
+
+        });
+    });
+
+    $('#CreateButton').click(function () {
+
+        var Name = $('#Name').val();
+        var RadioConnection = $('#RadioConnection').val();
+        var Category = $('#SelectedValue').val();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("Create","Home")',
+            data: { Name, RadioConnection, Category },
+            success: function (result) {
+                if (result) {
+                    $('#exampleModal').modal('dispose');
+                    location.reload();
+                }
+                else
+                {
+                    alert('An error appeared.');
+                }
+            }
+        });
+    });
+
+    </script>
+}
