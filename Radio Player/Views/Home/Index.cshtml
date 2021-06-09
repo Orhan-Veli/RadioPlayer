@@ -386,15 +386,13 @@
         var Id = $('#updateModal #Id').val();
         var Name = $('#updateModal #Name').val();
         var RadioConnection = $('#updateModal #RadioConnection').val();
-        var Category = $('#updateModal #SelectedValue').val();
-          $('#UpdateButton').click(function () {
+        var Category = $('#updateModal #SelectedValue').val();          
             $.ajax({
                 type: "PUT",
                 url: "@Url.Action("Update","Home")",
                 data: { Id, Name, Category, RadioConnection },
                 success: function (result) {
-                    if (result) {
-                        $('#updateModal').modal('dispose');
+                    if (result) {                       
                         location.reload();
                     }
                     else
@@ -402,9 +400,7 @@
                         alert('Update error');
                     }
                 }
-            });
-
-        });
+            });        
     });
 
     $('#CreateButton').click(function () {
