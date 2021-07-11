@@ -11,7 +11,7 @@ namespace Radio_Player.Dal.Repositories.Abstract
         Task Create(T model);
         Task Delete(string id);
         Task<T> Update(T model);
-        Task<List<T>> GetAll();
+        Task<List<T>> GetAll(string id);
         Task<T> Get(string id);
     }
 }

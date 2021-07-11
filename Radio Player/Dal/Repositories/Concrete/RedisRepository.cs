@@ -26,17 +26,6 @@ namespace Radio_Player.Dal.Repositories.Concrete
             await _distributedCache.SetStringAsync("model", data);
         }
 
-        public async Task<List<Radio>> BulkGet(string id)
-        {
-            string result = await _distributedCache.GetStringAsync(id);
-            if (result == null)
-            {
-                return null;
-            }
-            var val = JsonConvert.DeserializeObject<List<Radio>>(result);
-            return val;
-        }
-
         public async Task Create(Radio model)
         {
           var data = JsonConvert.SerializeObject(model);
@@ -55,9 +44,15 @@ namespace Radio_Player.Dal.Repositories.Concrete
             return JsonConvert.DeserializeObject<Radio>(result);            
         }
 
-        public async Task<List<Radio>> GetAll()
+        public async Task<List<Radio>> GetAll(string id)
         {
-            throw new Exception();
+            string result = await _distributedCache.GetStringAsync(id);
+            if (result == null)
+            {
+                return null;
+            }
+            var val = JsonConvert.DeserializeObject<List<Radio>>(result);
+            return val;
         }
 
         public async Task<Radio> Update(Radio model)

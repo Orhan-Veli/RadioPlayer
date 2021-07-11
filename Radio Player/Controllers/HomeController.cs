@@ -39,7 +39,7 @@ namespace Radio_Player.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var redisResult = await _redisService.Get(redisKey);
+            var redisResult = await _redisService.GetAll(redisKey);
             var emptyList = new List<RadioListViewModel>();
             var result = await _radioService.GetAll();
             if (result.Data.Count>0)

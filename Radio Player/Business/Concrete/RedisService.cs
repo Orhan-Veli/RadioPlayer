@@ -35,19 +35,22 @@ namespace Radio_Player.Business.Concrete
             return new Result<object>(true);
         }
 
-        public async Task<IResult<List<Radio>>> Get(string id)
+        public async Task<IResult<Radio>> Get(string id)
         {
             if (string.IsNullOrEmpty(id))
-                return new Result<List<Radio>>(false,Messages.IdNotFound);
-            var result = await _entityRepository.BulkGet(id);
+                return new Result<Radio>(false,Messages.IdNotFound);
+            var result = await _entityRepository.Get(id);
             if (result == null)
-                return new Result<List<Radio>>(false);
-            return new Result<List<Radio>> (true,result);
+                return new Result<Radio>(false);
+            return new Result<Radio> (true,result);
         }
 
-        public async Task<IResult<List<Radio>>> GetAll()
+        public async Task<IResult<List<Radio>>> GetAll(string id)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(id))
+                return new Result<List<Radio>>(false, Messages.IdNotFound);
+            var result = await _entityRepository.GetAll(id);
+            return new Result<List<Radio>>(true, result);
         }
 
         public async Task<IResult<Radio>> Update(Radio model)

@@ -10,6 +10,6 @@ namespace Radio_Player.Dal.Repositories.Abstract
     {
         public Task BulkCreate(List<Radio> model);
 
-        public Task<List<Radio>> BulkGet(string id);
+   
     }
 }
