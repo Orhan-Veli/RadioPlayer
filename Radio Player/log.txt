@@ -10107,3 +10107,173 @@ WHERE [a].[NormalizedName] = @__normalizedName_0
 2021-06-30 22:46:14.001 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
 2021-06-30 22:46:14.003 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
 2021-06-30 22:46:14.003 +03:00 [INF] Request finished in 1.2789ms 200 image/x-icon
+2021-07-14 23:36:51.887 +03:00 [INF] User profile is available. Using 'C:\Users\orhan\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-07-14 23:36:52.537 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-07-14 23:36:52.544 +03:00 [INF] Hosting environment: Development
+2021-07-14 23:36:52.545 +03:00 [INF] Content root path: C:\Users\orhan\source\repos\Radio Player\Radio Player
+2021-07-14 23:36:52.581 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:36:52.623 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:36:52.693 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:36:58.537 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 5840.5197ms
+2021-07-14 23:36:58.541 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:36:58.545 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s); to create a disconnected multiplexer, disable AbortOnConnectFail. SocketFailure on PING
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectAsync(String configuration, TextWriter log) in c:\code\StackExchange.Redis\StackExchange.Redis\StackExchange\Redis\ConnectionMultiplexer.cs:line 801
+   at Microsoft.Extensions.Caching.Redis.RedisCache.ConnectAsync(CancellationToken token)
+   at Microsoft.Extensions.Caching.Redis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.Redis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at Radio_Player.Dal.Repositories.Concrete.RedisRepository.GetAll(String id) in C:\Users\orhan\source\repos\Radio Player\Radio Player\Dal\Repositories\Concrete\RedisRepository.cs:line 49
+   at Radio_Player.Business.Concrete.RedisService.GetAll(String id) in C:\Users\orhan\source\repos\Radio Player\Radio Player\Business\Concrete\RedisService.cs:line 52
+   at Radio_Player.Controllers.HomeController.Index(String id) in C:\Users\orhan\source\repos\Radio Player\Radio Player\Controllers\HomeController.cs:line 42
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-07-14 23:36:58.735 +03:00 [INF] Request finished in 6156.1482ms 500 text/html; charset=utf-8
+2021-07-14 23:36:58.949 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/favicon.ico  
+2021-07-14 23:36:58.973 +03:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\favicon.ico'
+2021-07-14 23:36:58.974 +03:00 [INF] Request finished in 24.7644ms 200 image/x-icon
+2021-07-14 23:37:20.229 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:37:20.235 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:37:20.236 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:37:20.583 +03:00 [INF] 7data have found.
+2021-07-14 23:37:20.852 +03:00 [INF] Executing ViewResult, running view Index.
+2021-07-14 23:37:21.192 +03:00 [INF] Executed ViewResult - view Index executed in 443.8911ms.
+2021-07-14 23:37:21.193 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 957.0963ms
+2021-07-14 23:37:21.193 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:37:21.199 +03:00 [INF] Request finished in 969.3838ms 200 text/html; charset=utf-8
+2021-07-14 23:37:21.217 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/css/fresh-bootstrap-table.css  
+2021-07-14 23:37:21.217 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/css/demo.css  
+2021-07-14 23:37:21.230 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/js/demo/gsdk-switch.js  
+2021-07-14 23:37:21.232 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/js/demo/jquery.sharrre.js  
+2021-07-14 23:37:21.235 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/css/demo.css'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\css\demo.css'
+2021-07-14 23:37:21.235 +03:00 [INF] Request finished in 17.9376ms 200 text/css
+2021-07-14 23:37:21.236 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/js/demo/demo.js  
+2021-07-14 23:37:21.236 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/Start.png  
+2021-07-14 23:37:21.241 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/Stop.png  
+2021-07-14 23:37:21.241 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/js/demo/demo.js'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\js\demo\demo.js'
+2021-07-14 23:37:21.242 +03:00 [INF] Request finished in 5.5925ms 200 application/javascript
+2021-07-14 23:37:21.247 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/Start.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\Start.png'
+2021-07-14 23:37:21.247 +03:00 [INF] Request finished in 10.8583ms 200 image/png
+2021-07-14 23:37:21.254 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/Stop.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\Stop.png'
+2021-07-14 23:37:21.254 +03:00 [INF] Request finished in 13.6222ms 200 image/png
+2021-07-14 23:37:21.255 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/js/demo/jquery.sharrre.js'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\js\demo\jquery.sharrre.js'
+2021-07-14 23:37:21.255 +03:00 [INF] Request finished in 22.7049ms 200 application/javascript
+2021-07-14 23:37:21.262 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/css/fresh-bootstrap-table.css'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\css\fresh-bootstrap-table.css'
+2021-07-14 23:37:21.263 +03:00 [INF] Request finished in 46.0751ms 200 text/css
+2021-07-14 23:37:21.273 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/js/demo/gsdk-switch.js'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\js\demo\gsdk-switch.js'
+2021-07-14 23:37:21.273 +03:00 [INF] Request finished in 42.8647ms 200 application/javascript
+2021-07-14 23:37:22.100 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/bg.jpg  
+2021-07-14 23:37:22.108 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/bg.jpg'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\bg.jpg'
+2021-07-14 23:37:22.109 +03:00 [INF] Request finished in 8.45ms 200 image/jpeg
+2021-07-14 23:37:22.842 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
+2021-07-14 23:37:22.850 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
+2021-07-14 23:37:22.850 +03:00 [INF] Request finished in 8.6364ms 200 image/x-icon
+2021-07-14 23:37:54.762 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:37:54.763 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:37:54.763 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:38:48.707 +03:00 [INF] Executing ViewResult, running view Index.
+2021-07-14 23:38:48.714 +03:00 [INF] Executed ViewResult - view Index executed in 7.4522ms.
+2021-07-14 23:38:48.714 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 53951.066ms
+2021-07-14 23:38:48.714 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:38:48.714 +03:00 [INF] Request finished in 53953.9179ms 200 text/html; charset=utf-8
+2021-07-14 23:38:48.882 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
+2021-07-14 23:38:48.883 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
+2021-07-14 23:38:48.883 +03:00 [INF] Request finished in 0.919ms 200 image/x-icon
+2021-07-14 23:39:39.577 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44324/Account/Login application/x-www-form-urlencoded; charset=UTF-8 33
+2021-07-14 23:39:39.580 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.AccountController.Login (Radio Player)'
+2021-07-14 23:39:39.586 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Radio_Player.Models.LoginViewModel) on controller Radio_Player.Controllers.AccountController (Radio Player).
+2021-07-14 23:39:40.289 +03:00 [INF] Entity Framework Core 5.0.6 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-07-14 23:39:40.971 +03:00 [INF] Executed DbCommand (61ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[ConfirmPassword], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[Password], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-07-14 23:39:41.117 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[ConfirmPassword], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[Password], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2021-07-14 23:39:41.210 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2021-07-14 23:39:41.246 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2021-07-14 23:39:41.255 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2021-07-14 23:39:41.263 +03:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2021-07-14 23:39:41.267 +03:00 [INF] Executing JsonResult, writing value of type 'System.String'.
+2021-07-14 23:39:41.269 +03:00 [INF] Executed action Radio_Player.Controllers.AccountController.Login (Radio Player) in 1682.9763ms
+2021-07-14 23:39:41.269 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.AccountController.Login (Radio Player)'
+2021-07-14 23:39:41.272 +03:00 [INF] Request finished in 1695.329ms 200 application/json; charset=utf-8
+2021-07-14 23:39:41.281 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:39:41.287 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:39:41.287 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:39:43.838 +03:00 [INF] Executing ViewResult, running view Index.
+2021-07-14 23:39:43.845 +03:00 [INF] Executed ViewResult - view Index executed in 6.7637ms.
+2021-07-14 23:39:43.845 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 2557.9094ms
+2021-07-14 23:39:43.845 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:39:43.845 +03:00 [INF] Request finished in 2563.78ms 200 text/html; charset=utf-8
+2021-07-14 23:39:43.903 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/RadioTower.png  
+2021-07-14 23:39:43.903 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/Edit.png  
+2021-07-14 23:39:43.913 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/Edit.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\Edit.png'
+2021-07-14 23:39:43.913 +03:00 [INF] Request finished in 9.8844ms 200 image/png
+2021-07-14 23:39:43.914 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/RadioTower.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\RadioTower.png'
+2021-07-14 23:39:43.914 +03:00 [INF] Request finished in 10.6174ms 200 image/png
+2021-07-14 23:39:43.922 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/Trash.png  
+2021-07-14 23:39:43.926 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/Icons/Like.png  
+2021-07-14 23:39:43.934 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/Trash.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\Trash.png'
+2021-07-14 23:39:43.935 +03:00 [INF] Request finished in 12.1302ms 200 image/png
+2021-07-14 23:39:43.937 +03:00 [INF] Sending file. Request path: '/MainPanel/Icons/Like.png'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\Icons\Like.png'
+2021-07-14 23:39:43.941 +03:00 [INF] Request finished in 18.1978ms 200 image/png
+2021-07-14 23:39:44.024 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
+2021-07-14 23:39:44.024 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
+2021-07-14 23:39:44.024 +03:00 [INF] Request finished in 0.8226ms 200 image/x-icon
+2021-07-14 23:40:15.265 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:40:15.266 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:40:15.266 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:41:14.856 +03:00 [INF] Executing ViewResult, running view Index.
+2021-07-14 23:41:14.860 +03:00 [INF] Executed ViewResult - view Index executed in 3.434ms.
+2021-07-14 23:41:14.860 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 59593.5084ms
+2021-07-14 23:41:14.860 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:41:14.860 +03:00 [INF] Request finished in 59594.8467ms 200 text/html; charset=utf-8
+2021-07-14 23:41:15.033 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
+2021-07-14 23:41:15.034 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
+2021-07-14 23:41:15.034 +03:00 [INF] Request finished in 0.8015ms 200 image/x-icon
+2021-07-14 23:43:07.370 +03:00 [INF] Request starting HTTP/2.0 POST https://localhost:44324/Account/Logout  0
+2021-07-14 23:43:07.374 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.AccountController.Logout (Radio Player)'
+2021-07-14 23:43:07.378 +03:00 [INF] Route matched with {action = "Logout", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller Radio_Player.Controllers.AccountController (Radio Player).
+2021-07-14 23:43:07.381 +03:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2021-07-14 23:43:07.382 +03:00 [INF] AuthenticationScheme: Identity.External signed out.
+2021-07-14 23:43:07.383 +03:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2021-07-14 23:43:07.383 +03:00 [INF] Executing JsonResult, writing value of type 'System.Boolean'.
+2021-07-14 23:43:07.388 +03:00 [INF] Executed action Radio_Player.Controllers.AccountController.Logout (Radio Player) in 9.3599ms
+2021-07-14 23:43:07.388 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.AccountController.Logout (Radio Player)'
+2021-07-14 23:43:07.388 +03:00 [INF] Request finished in 18.4366ms 200 application/json; charset=utf-8
+2021-07-14 23:43:07.399 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/  
+2021-07-14 23:43:07.400 +03:00 [INF] Executing endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:43:07.400 +03:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller Radio_Player.Controllers.HomeController (Radio Player).
+2021-07-14 23:43:08.886 +03:00 [INF] Executing ViewResult, running view Index.
+2021-07-14 23:43:08.888 +03:00 [INF] Executed ViewResult - view Index executed in 1.7966ms.
+2021-07-14 23:43:08.888 +03:00 [INF] Executed action Radio_Player.Controllers.HomeController.Index (Radio Player) in 1488.43ms
+2021-07-14 23:43:08.888 +03:00 [INF] Executed endpoint 'Radio_Player.Controllers.HomeController.Index (Radio Player)'
+2021-07-14 23:43:08.889 +03:00 [INF] Request finished in 1489.3671ms 200 text/html; charset=utf-8
+2021-07-14 23:43:09.080 +03:00 [INF] Request starting HTTP/2.0 GET https://localhost:44324/MainPanel/assets/img/favicon.ico  
+2021-07-14 23:43:09.081 +03:00 [INF] Sending file. Request path: '/MainPanel/assets/img/favicon.ico'. Physical path: 'C:\Users\orhan\source\repos\Radio Player\Radio Player\wwwroot\MainPanel\assets\img\favicon.ico'
+2021-07-14 23:43:09.081 +03:00 [INF] Request finished in 1.1604ms 200 image/x-icon

@@ -48,9 +48,9 @@ namespace Radio_Player.Business.Concrete
             return new Result<Radio>(true, result);
         }
 
-        public async Task<IResult<List<Radio>>> GetAll()
+        public async Task<IResult<List<Radio>>> GetAll(string id)
         {
-            var results = await _radioRepository.GetAll();
+            var results = await _radioRepository.GetAll(id);
             return new Result<List<Radio>>(true,results);
         }
 

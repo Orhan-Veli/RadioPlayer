@@ -38,7 +38,7 @@ namespace Radio_Player.Dal.Repositories.Concrete
             return model;
         }
 
-        public async Task<List<Radio>> GetAll()
+        public async Task<List<Radio>> GetAll(string id)
         {
             var models = await _radios.Find(x => true).ToListAsync();
             return models;

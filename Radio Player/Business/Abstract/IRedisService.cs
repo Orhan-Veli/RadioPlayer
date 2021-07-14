@@ -12,7 +12,7 @@ namespace Radio_Player.Business.Abstract
         Task<IResult<List<Radio>>> Create(List<Radio> model);
         Task<IResult<object>> Delete(string id);
         Task<IResult<Radio>> Update(Radio model);
-        Task<IResult<List<Radio>>> Get(string id);
+        Task<IResult<Radio>> Get(string id);
         Task<IResult<List<Radio>>> GetAll(string id);
 
     }
